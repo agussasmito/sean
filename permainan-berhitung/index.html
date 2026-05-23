@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permainan Berhitung</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Pengaturan</h2>
+            
+            <div class="setting-group">
+                <h3>Rentang Angka</h3>
+                <div class="range-inputs">
+                    <div>
+                        <label for="min-num">Min:</label>
+                        <input type="number" id="min-num" value="1">
+                    </div>
+                    <div>
+                        <label for="max-num">Max:</label>
+                        <input type="number" id="max-num" value="10">
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h3>Operasi (Pilih min. 1)</h3>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="op-add" value="add" checked> Penjumlahan (+)
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="op-sub" value="sub" checked> Pengurangan (-)
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="op-mul" value="mul" checked> Perkalian (×)
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="op-div" value="div" checked> Pembagian (÷)
+                </label>
+                <p id="op-error" class="error-text hidden">Pilih minimal 1 operasi!</p>
+            </div>
+
+            <div class="setting-group">
+                <h3>Mode Waktu</h3>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="use-timer" checked> Gunakan Timer
+                </label>
+                <div id="timer-input-group" class="range-inputs" style="margin-top: 10px;">
+                    <div>
+                        <label for="timer-sec">Waktu (Detik):</label>
+                        <input type="number" id="timer-sec" value="60">
+                    </div>
+                </div>
+            </div>
+
+            <button id="apply-settings-btn">Terapkan Pengaturan</button>
+        </aside>
+
+        <main class="game-area">
+            <div id="start-overlay" class="overlay">
+                <button id="start-btn" class="big-btn">Mulai Permainan</button>
+            </div>
+            
+            <div id="game-over-modal" class="modal hidden">
+                <div class="modal-content">
+                    <h2>Waktu Habis!</h2>
+                    <p>Skor Akhir Anda:</p>
+                    <h1 id="final-score">0</h1>
+                    <button id="restart-btn" class="big-btn">Main Lagi</button>
+                </div>
+            </div>
+
+            <div class="score-board">
+                <span id="timer-display">Waktu: <span id="time-left">60</span>s | </span>
+                <span>Skor: <span id="score">0</span></span>
+            </div>
+            
+            <div class="problem-container">
+                <div id="equation" class="equation">
+                    <span id="num1">5</span>
+                    <span id="operator">+</span>
+                    <span id="num2">3</span>
+                    <span>=</span>
+                </div>
+                <input type="number" id="answer-input" autocomplete="off" placeholder="?">
+            </div>
+            
+            <p id="feedback-msg" class="feedback-msg hidden">Benar!</p>
+            <p class="hint-text">Tekan <strong>Enter</strong> untuk menjawab</p>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

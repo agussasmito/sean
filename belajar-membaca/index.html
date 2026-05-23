@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Membaca</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <h1>Belajar Membaca</h1>
+            
+            <div class="setting-group">
+                <label for="lang-select">Bahasa</label>
+                <select id="lang-select">
+                    <option value="indonesia">Indonesia</option>
+                    <option value="inggris">Inggris</option>
+                </select>
+            </div>
+
+            <div class="setting-group">
+                <label for="count-select">Jumlah Kata</label>
+                <select id="count-select">
+                    <option value="1">1 Kata</option>
+                    <option value="2">2 Kata</option>
+                </select>
+            </div>
+
+            <div class="setting-group">
+                <label for="category-select">Kategori</label>
+                <select id="category-select">
+                    <option value="buah">Buah</option>
+                    <option value="sayur">Sayur</option>
+                    <option value="hewan">Hewan</option>
+                    <option value="negara">Nama Negara</option>
+                </select>
+            </div>
+            
+            <p class="hint">Tekan <strong>SPASI</strong> untuk kata baru!</p>
+        </aside>
+
+        <main class="reading-area">
+            <div id="word-display" class="word-display">
+                <!-- Words will be injected here -->
+            </div>
+            <p class="mobile-hint">Ketuk layar untuk kata baru!</p>
+            <button id="speak-btn" class="speak-btn" title="Baca kata">
+                🔊
+            </button>
+        </main>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
