@@ -11,7 +11,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 .app-container {
@@ -19,6 +20,7 @@ body {
     width: 95%;
     max-width: 1200px;
     height: 85vh;
+    height: 85dvh;
     background: #ffffff;
     border-radius: 25px;
     box-shadow: 0 15px 40px rgba(33, 150, 243, 0.2);
@@ -27,6 +29,7 @@ body {
 
 .sidebar {
     width: 320px;
+    min-width: 260px;
     background: #bbdefb;
     padding: 40px 30px;
     display: flex;
@@ -92,6 +95,7 @@ body {
     background: #ffffff;
     position: relative;
     cursor: pointer; /* To indicate clickable area for mobile */
+    min-width: 0;
 }
 
 .word-display {
@@ -99,6 +103,8 @@ body {
     flex-direction: column;
     gap: 40px;
     align-items: center;
+    padding: 0 20px;
+    width: 100%;
 }
 
 .word-container {
@@ -106,7 +112,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     font-family: 'Fredoka One', cursive;
-    font-size: 8vw; /* Very large font */
+    font-size: clamp(2.5rem, 8vw, 7rem);
     letter-spacing: 2px;
 }
 
@@ -198,26 +204,202 @@ body {
     100% { transform: scale(1); box-shadow: 0 6px 20px rgba(21, 101, 192, 0.4); }
 }
 
-/* Responsive */
-@media (max-width: 800px) {
+/* ==============================
+   Responsive — Tablet
+   ============================== */
+@media (max-width: 900px) {
     .app-container {
         flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        width: 100%;
+        border-radius: 0;
     }
+
     .sidebar {
         width: 100%;
-        padding: 20px;
+        min-width: unset;
+        padding: 24px 20px 20px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: flex-end;
     }
+
     .sidebar h1 {
-        margin-bottom: 20px;
-        font-size: 24px;
+        width: 100%;
+        margin-bottom: 8px;
+        font-size: 22px;
     }
+
+    .setting-group {
+        flex: 1;
+        min-width: 120px;
+        margin-bottom: 0;
+    }
+
+    .setting-group label {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    .setting-group select {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
     .hint {
         display: none;
     }
+
     .mobile-hint {
         display: block;
     }
+
+    .reading-area {
+        flex: 1;
+        min-height: 55vh;
+        min-height: 55dvh;
+    }
+
     .word-container {
-        font-size: 15vw;
+        font-size: clamp(2.5rem, 12vw, 5rem);
+    }
+
+    .word-display {
+        gap: 24px;
+    }
+
+    .speak-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+    }
+}
+
+/* ==============================
+   Responsive — Small Phone
+   ============================== */
+@media (max-width: 480px) {
+    body {
+        align-items: stretch;
+    }
+
+    .app-container {
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .sidebar {
+        padding: 16px 16px 12px;
+        gap: 8px;
+    }
+
+    .sidebar h1 {
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+
+    .setting-group {
+        min-width: 100px;
+    }
+
+    .setting-group label {
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+
+    .setting-group select {
+        padding: 8px 10px;
+        font-size: 13px;
+        border-width: 2px;
+        border-radius: 8px;
+    }
+
+    .reading-area {
+        min-height: 50vh;
+        min-height: 50dvh;
+    }
+
+    .word-container {
+        font-size: clamp(2rem, 14vw, 4rem);
+        letter-spacing: 1px;
+    }
+
+    .mobile-hint {
+        bottom: 16px;
+        font-size: 13px;
+    }
+
+    .speak-btn {
+        bottom: 14px;
+        right: 14px;
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+}
+
+/* ==============================
+   Landscape phone orientation
+   ============================== */
+@media (max-height: 500px) and (orientation: landscape) {
+    .app-container {
+        flex-direction: row;
+        height: 100vh;
+        height: 100dvh;
+        min-height: unset;
+    }
+
+    .sidebar {
+        width: 220px;
+        min-width: 180px;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        padding: 16px 14px;
+        overflow-y: auto;
+    }
+
+    .sidebar h1 {
+        font-size: 18px;
+        margin-bottom: 12px;
+        width: auto;
+    }
+
+    .setting-group {
+        flex: unset;
+        margin-bottom: 10px;
+    }
+
+    .setting-group label {
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+
+    .setting-group select {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    .reading-area {
+        min-height: unset;
+    }
+
+    .word-container {
+        font-size: clamp(2rem, 6vw, 4rem);
+    }
+
+    .mobile-hint {
+        display: block;
+        bottom: 10px;
+        font-size: 12px;
+    }
+
+    .hint {
+        display: none;
     }
 }

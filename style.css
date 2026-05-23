@@ -1,0 +1,642 @@
+/* ========================================
+   🌈 Dunia Sean - Landing Page Styles
+   ======================================== */
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #fffbf0;
+    --bg-hero: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 60%, #f5576c 100%);
+    --text-dark: #2d1b69;
+    --text-light: #fff;
+    --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.08);
+    --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.12);
+    --shadow-card-hover: 0 20px 60px rgba(0, 0, 0, 0.18);
+    --radius-lg: 28px;
+    --radius-xl: 36px;
+    --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Fredoka', 'Baloo 2', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* --- Floating Decorations --- */
+.floating-decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.float-item {
+    position: absolute;
+    top: -10%;
+    left: var(--x);
+    font-size: var(--size);
+    animation: floatDown 12s var(--delay) infinite linear;
+    opacity: 0.3;
+    filter: blur(0.5px);
+}
+
+@keyframes floatDown {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* --- Hero Section --- */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-hero);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+    overflow: hidden;
+    z-index: 1;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+}
+
+.hero-mascot {
+    font-size: 6rem;
+    animation: mascotBounce 2s ease-in-out infinite;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+    margin-bottom: 1rem;
+}
+
+@keyframes mascotBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+}
+
+.hero-title {
+    margin-bottom: 1.2rem;
+}
+
+.title-line {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+}
+
+.letter {
+    display: inline-block;
+    font-family: 'Baloo 2', 'Fredoka', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    color: white;
+    text-shadow:
+        3px 3px 0 rgba(0,0,0,0.15),
+        0 0 40px rgba(255,255,255,0.3);
+    animation: letterPop 0.6s var(--transition-bounce) backwards;
+    animation-delay: calc(var(--hue) * 5ms);
+    cursor: default;
+    transition: transform 0.3s var(--transition-bounce);
+    line-height: 1.1;
+}
+
+.letter:hover {
+    transform: scale(1.2) rotate(-5deg);
+    text-shadow:
+        3px 3px 0 rgba(0,0,0,0.15),
+        0 0 60px rgba(255,255,255,0.5);
+}
+
+.letter.space {
+    width: 0.3em;
+}
+
+@keyframes letterPop {
+    0% {
+        transform: scale(0) rotate(-20deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.hero-subtitle {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+    animation: fadeInUp 1s 0.8s backwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-hint {
+    margin-top: 2.5rem;
+    animation: fadeInUp 1s 1.2s backwards;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.bounce-arrow {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    animation: arrowBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes arrowBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(12px); }
+}
+
+.hero-wave {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    line-height: 0;
+}
+
+.hero-wave svg {
+    width: 100%;
+    height: 80px;
+}
+
+/* --- Games Section --- */
+.games-section {
+    position: relative;
+    z-index: 1;
+    padding: 3rem 1.5rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title-wrapper {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea, #f5576c, #f59e0b);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 4s ease infinite;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+}
+
+/* --- Game Card --- */
+.game-card {
+    position: relative;
+    text-decoration: none;
+    color: var(--text-dark);
+    border-radius: var(--radius-xl);
+    overflow: visible;
+    transition: transform 0.4s var(--transition-bounce), box-shadow 0.4s ease;
+    animation: cardSlideIn 0.7s var(--transition-bounce) backwards;
+    cursor: pointer;
+    display: block;
+}
+
+.game-card:nth-child(1) { animation-delay: 0.1s; }
+.game-card:nth-child(2) { animation-delay: 0.2s; }
+.game-card:nth-child(3) { animation-delay: 0.3s; }
+.game-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.game-card:hover {
+    transform: translateY(-12px) scale(1.03);
+}
+
+.game-card:active {
+    transform: translateY(-4px) scale(0.98);
+}
+
+/* Card glow effect */
+.card-glow {
+    position: absolute;
+    inset: -3px;
+    border-radius: calc(var(--radius-xl) + 3px);
+    background: conic-gradient(
+        from 0deg,
+        hsl(var(--card-hue), 80%, 65%),
+        hsl(calc(var(--card-hue) + 60), 80%, 65%),
+        hsl(calc(var(--card-hue) + 120), 80%, 65%),
+        hsl(var(--card-hue), 80%, 65%)
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    animation: glowSpin 4s linear infinite;
+}
+
+@keyframes glowSpin {
+    to { filter: hue-rotate(360deg); }
+}
+
+.game-card:hover .card-glow {
+    opacity: 0.7;
+}
+
+.card-inner {
+    position: relative;
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: 2.2rem 1.8rem 1.8rem;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    border: 3px solid hsl(var(--card-hue), 60%, 88%);
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    overflow: hidden;
+}
+
+.game-card:hover .card-inner {
+    box-shadow: var(--shadow-card-hover);
+    border-color: hsl(var(--card-hue), 70%, 70%);
+}
+
+.card-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(
+        90deg,
+        hsl(var(--card-hue), 80%, 65%),
+        hsl(calc(var(--card-hue) + 40), 80%, 70%)
+    );
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+/* Card icon */
+.card-icon-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        hsl(var(--card-hue), 70%, 92%),
+        hsl(var(--card-hue), 80%, 85%)
+    );
+    transition: transform 0.4s var(--transition-bounce);
+}
+
+.game-card:hover .card-icon-bg {
+    transform: scale(1.1);
+}
+
+.card-icon {
+    position: relative;
+    font-size: 3.5rem;
+    z-index: 1;
+    transition: transform 0.4s var(--transition-bounce);
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+.game-card:hover .card-icon {
+    transform: scale(1.15) rotate(-8deg);
+    animation: iconWiggle 0.5s ease-in-out;
+}
+
+@keyframes iconWiggle {
+    0%, 100% { transform: scale(1.15) rotate(-8deg); }
+    25% { transform: scale(1.15) rotate(8deg); }
+    50% { transform: scale(1.15) rotate(-5deg); }
+    75% { transform: scale(1.15) rotate(5deg); }
+}
+
+/* Sparkles around icon */
+.card-sparkles {
+    position: absolute;
+    inset: -10px;
+    pointer-events: none;
+}
+
+.sparkle {
+    position: absolute;
+    font-size: 0.8rem;
+    color: hsl(var(--card-hue), 80%, 60%);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.5s var(--transition-bounce);
+}
+
+.sparkle:nth-child(1) { top: 0; left: 50%; }
+.sparkle:nth-child(2) { top: 50%; right: 0; }
+.sparkle:nth-child(3) { bottom: 0; left: 50%; }
+.sparkle:nth-child(4) { top: 50%; left: 0; }
+
+.game-card:hover .sparkle {
+    opacity: 1;
+    animation: sparkleRotate 1.5s linear infinite;
+    animation-delay: calc(var(--i) * 0.2s);
+}
+
+@keyframes sparkleRotate {
+    0% { transform: scale(0.5) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+    100% { transform: scale(0.5) rotate(360deg); }
+}
+
+/* Card text */
+.card-title {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: hsl(var(--card-hue), 50%, 35%);
+    transition: color 0.3s;
+}
+
+.game-card:hover .card-title {
+    color: hsl(var(--card-hue), 60%, 45%);
+}
+
+.card-desc {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.card-badge {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: linear-gradient(
+        135deg,
+        hsl(var(--card-hue), 70%, 92%),
+        hsl(var(--card-hue), 80%, 88%)
+    );
+    color: hsl(var(--card-hue), 60%, 40%);
+    margin-bottom: 1.2rem;
+}
+
+.card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 100px;
+    background: linear-gradient(
+        135deg,
+        hsl(var(--card-hue), 75%, 55%),
+        hsl(calc(var(--card-hue) + 30), 75%, 60%)
+    );
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s var(--transition-bounce);
+    box-shadow: 0 4px 15px hsla(var(--card-hue), 70%, 50%, 0.3);
+}
+
+.game-card:hover .card-action {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px hsla(var(--card-hue), 70%, 50%, 0.4);
+}
+
+.action-arrow {
+    display: inline-block;
+    transition: transform 0.3s var(--transition-bounce);
+    font-size: 1.1rem;
+}
+
+.game-card:hover .action-arrow {
+    transform: translateX(4px);
+}
+
+/* --- Footer --- */
+.footer {
+    position: relative;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    padding: 0 2rem 2.5rem;
+    text-align: center;
+    color: white;
+    z-index: 1;
+    margin-top: 2rem;
+}
+
+.footer-wave {
+    position: relative;
+    top: -1px;
+    margin-bottom: 1rem;
+    line-height: 0;
+}
+
+.footer-wave svg {
+    width: 100%;
+    height: 60px;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
+}
+
+.footer-text {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+}
+
+.heart {
+    display: inline-block;
+    animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.25); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+}
+
+.footer-emoji {
+    font-size: 1.5rem;
+    letter-spacing: 0.5rem;
+    opacity: 0.85;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 85vh;
+    }
+
+    .hero-mascot {
+        font-size: 4.5rem;
+    }
+
+    .games-section {
+        padding: 2rem 1rem 3rem;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .card-inner {
+        padding: 1.8rem 1.4rem 1.4rem;
+    }
+
+    .card-icon-wrapper {
+        width: 80px;
+        height: 80px;
+    }
+
+    .card-icon {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .letter {
+        font-size: 2.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+/* --- Accessibility: Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .hero {
+        background-size: 100% 100%;
+    }
+}
+
+/* --- Focus styles for accessibility --- */
+.game-card:focus-visible {
+    outline: 3px solid hsl(var(--card-hue), 80%, 55%);
+    outline-offset: 4px;
+    border-radius: var(--radius-xl);
+}
+
+.game-card:focus-visible .card-glow {
+    opacity: 0.7;
+}

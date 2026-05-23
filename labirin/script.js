@@ -392,6 +392,30 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
+// Mobile D-pad controls
+document.querySelectorAll('.dpad-btn').forEach(btn => {
+    const dir = btn.dataset.dir;
+    const dirMap = {
+        up:    { dx: 0, dy: -1 },
+        down:  { dx: 0, dy: 1 },
+        left:  { dx: -1, dy: 0 },
+        right: { dx: 1, dy: 0 }
+    };
+
+    // Use touchstart for immediate response on mobile
+    btn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (!gameActive) return;
+        currentDirection = { ...dirMap[dir] };
+    });
+
+    // Fallback for mouse clicks
+    btn.addEventListener('click', () => {
+        if (!gameActive) return;
+        currentDirection = { ...dirMap[dir] };
+    });
+});
+
 generateBtn.addEventListener('click', generateMaze);
 playAgainBtn.addEventListener('click', generateMaze);
 

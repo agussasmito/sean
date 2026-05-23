@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dunia Sean - Kumpulan permainan edukatif dan menyenangkan untuk anak-anak. Belajar membaca, berhitung, dan bermain!">
+    <title>🌈 Dunia Sean - Bermain & Belajar!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating decorations -->
+    <div class="floating-decorations" aria-hidden="true">
+        <span class="float-item" style="--delay: 0s; --x: 5%; --size: 2.2rem;">⭐</span>
+        <span class="float-item" style="--delay: 1.5s; --x: 15%; --size: 1.8rem;">🌟</span>
+        <span class="float-item" style="--delay: 3s; --x: 25%; --size: 2.5rem;">☁️</span>
+        <span class="float-item" style="--delay: 0.8s; --x: 35%; --size: 1.5rem;">✨</span>
+        <span class="float-item" style="--delay: 2.2s; --x: 50%; --size: 2rem;">🦋</span>
+        <span class="float-item" style="--delay: 4s; --x: 60%; --size: 2.8rem;">🌈</span>
+        <span class="float-item" style="--delay: 1s; --x: 72%; --size: 1.6rem;">💫</span>
+        <span class="float-item" style="--delay: 3.5s; --x: 82%; --size: 2.3rem;">☁️</span>
+        <span class="float-item" style="--delay: 2.8s; --x: 92%; --size: 1.9rem;">⭐</span>
+        <span class="float-item" style="--delay: 5s; --x: 45%; --size: 2rem;">🎈</span>
+        <span class="float-item" style="--delay: 4.5s; --x: 78%; --size: 1.7rem;">🌸</span>
+        <span class="float-item" style="--delay: 1.2s; --x: 8%; --size: 2.1rem;">🎀</span>
+    </div>
+
+    <!-- Header -->
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-mascot" id="hero-mascot">🧒</div>
+            <h1 class="hero-title">
+                <span class="title-line">
+                    <span class="letter" style="--hue: 0;">D</span><span class="letter" style="--hue: 30;">u</span><span class="letter" style="--hue: 50;">n</span><span class="letter" style="--hue: 80;">i</span><span class="letter" style="--hue: 110;">a</span>
+                    <span class="letter space">&nbsp;</span>
+                    <span class="letter" style="--hue: 180;">S</span><span class="letter" style="--hue: 210;">e</span><span class="letter" style="--hue: 240;">a</span><span class="letter" style="--hue: 280;">n</span>
+                </span>
+            </h1>
+            <p class="hero-subtitle">✨ Ayo bermain sambil belajar! ✨</p>
+            <div class="scroll-hint" id="scroll-hint">
+                <span>Pilih permainan di bawah</span>
+                <div class="bounce-arrow">👇</div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,70 1440,80 L1440,120 L0,120 Z" fill="#fffbf0"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="games-section" id="games-section">
+        <div class="section-title-wrapper">
+            <h2 class="section-title">🎮 Pilih Permainan 🎮</h2>
+        </div>
+
+        <div class="games-grid" id="games-grid">
+            <!-- Belajar Membaca -->
+            <a href="belajar-membaca/index.html" class="game-card" id="card-membaca" style="--card-hue: 340; --card-accent: #ff6b9d;">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="card-icon-wrapper">
+                        <div class="card-icon-bg"></div>
+                        <span class="card-icon">📖</span>
+                        <div class="card-sparkles">
+                            <span class="sparkle" style="--i:0;">✦</span>
+                            <span class="sparkle" style="--i:1;">✦</span>
+                            <span class="sparkle" style="--i:2;">✦</span>
+                            <span class="sparkle" style="--i:3;">✦</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Belajar Membaca</h3>
+                    <p class="card-desc">Yuk belajar mengenal huruf dan membaca kata-kata seru! 🔤</p>
+                    <div class="card-badge">Edukatif</div>
+                    <div class="card-action">
+                        <span>Mulai Belajar</span>
+                        <span class="action-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Flappy Bird -->
+            <a href="flappy-bird/index.html" class="game-card" id="card-flappy" style="--card-hue: 140; --card-accent: #4ecdc4;">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="card-icon-wrapper">
+                        <div class="card-icon-bg"></div>
+                        <span class="card-icon">🐦</span>
+                        <div class="card-sparkles">
+                            <span class="sparkle" style="--i:0;">✦</span>
+                            <span class="sparkle" style="--i:1;">✦</span>
+                            <span class="sparkle" style="--i:2;">✦</span>
+                            <span class="sparkle" style="--i:3;">✦</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Flappy Bird</h3>
+                    <p class="card-desc">Terbangkan burung melewati rintangan! Berapa skor tertinggimu? 🏆</p>
+                    <div class="card-badge">Seru!</div>
+                    <div class="card-action">
+                        <span>Main Sekarang</span>
+                        <span class="action-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Labirin -->
+            <a href="labirin/index.html" class="game-card" id="card-labirin" style="--card-hue: 260; --card-accent: #a78bfa;">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="card-icon-wrapper">
+                        <div class="card-icon-bg"></div>
+                        <span class="card-icon">🏰</span>
+                        <div class="card-sparkles">
+                            <span class="sparkle" style="--i:0;">✦</span>
+                            <span class="sparkle" style="--i:1;">✦</span>
+                            <span class="sparkle" style="--i:2;">✦</span>
+                            <span class="sparkle" style="--i:3;">✦</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Labirin</h3>
+                    <p class="card-desc">Temukan jalan keluar dari labirin yang menantang! 🗺️</p>
+                    <div class="card-badge">Tantangan</div>
+                    <div class="card-action">
+                        <span>Mulai Petualangan</span>
+                        <span class="action-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Permainan Berhitung -->
+            <a href="permainan-berhitung/index.html" class="game-card" id="card-berhitung" style="--card-hue: 35; --card-accent: #f59e0b;">
+                <div class="card-glow"></div>
+                <div class="card-inner">
+                    <div class="card-icon-wrapper">
+                        <div class="card-icon-bg"></div>
+                        <span class="card-icon">🔢</span>
+                        <div class="card-sparkles">
+                            <span class="sparkle" style="--i:0;">✦</span>
+                            <span class="sparkle" style="--i:1;">✦</span>
+                            <span class="sparkle" style="--i:2;">✦</span>
+                            <span class="sparkle" style="--i:3;">✦</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Permainan Berhitung</h3>
+                    <p class="card-desc">Latih kemampuan matematikamu dengan cara yang menyenangkan! 🧮</p>
+                    <div class="card-badge">Pintar!</div>
+                    <div class="card-action">
+                        <span>Ayo Hitung</span>
+                        <span class="action-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path d="M0,40 C300,80 600,0 900,50 C1100,80 1300,30 1440,60 L1440,0 L0,0 Z" fill="#fffbf0"/>
+            </svg>
+        </div>
+        <div class="footer-content">
+            <p class="footer-text">
+                Dibuat dengan <span class="heart">❤️</span> untuk Sean
+            </p>
+            <p class="footer-emoji">🌟 🎨 📚 🎮 🚀</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
