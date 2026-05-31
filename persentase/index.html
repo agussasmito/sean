@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualisasi Persentase - Isi Gelas 🥤</title>
+    <meta name="description" content="Aplikasi interaktif untuk anak-anak: visualisasi persentase dalam bentuk isi gelas yang menyenangkan!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating background decorations -->
+    <div class="decorations" id="decorations"></div>
+
+    <div class="app-container">
+        <aside class="left-panel">
+            <header class="app-header">
+                <h1 id="main-title">🥤 Isi Gelas Persentase 🧃</h1>
+                <p class="subtitle">Masukkan angka dan lihat gelasnya terisi! ✨</p>
+            </header>
+
+            <section class="input-section" id="input-section">
+                <div class="input-row">
+                    <div class="input-group">
+                        <input 
+                            type="number" 
+                            id="percentInput" 
+                            min="0" 
+                            max="10000" 
+                            value="50" 
+                            placeholder="0 - 10000"
+                            aria-label="Masukkan persentase"
+                        >
+                        <span class="percent-badge">%</span>
+                    </div>
+                    <button id="showBtn" onclick="visualize()">
+                        <span class="btn-icon">🎨</span>
+                        <span class="btn-text">Tampilkan!</span>
+                    </button>
+                </div>
+                <div class="slider-wrapper">
+                    <span class="slider-label">0%</span>
+                    <input 
+                        type="range" 
+                        id="percentSlider" 
+                        min="0" 
+                        max="10000" 
+                        value="50"
+                        aria-label="Geser untuk memilih persentase"
+                    >
+                    <span class="slider-label">10000%</span>
+                </div>
+            </section>
+
+            <div class="info-display" id="infoDisplay"></div>
+        </aside>
+
+        <main class="right-panel">
+            <section class="canvas-section" id="canvas-section">
+                <canvas id="glassCanvas"></canvas>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
