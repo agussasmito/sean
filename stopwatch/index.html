@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⏱️ Stopwatch Multi-Komponen - Dunia Sean</title>
+    <meta name="description" content="Stopwatch interaktif untuk mengukur waktu per aktivitas atau komponen secara presisi. Sangat cocok untuk memantau waktu belajar dan tugas.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Link Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Decor -->
+    <div class="decorations" id="decorations">
+        <span class="float-item" style="--delay: 0s; --x: 8%; --size: 2rem;">⏱️</span>
+        <span class="float-item" style="--delay: 2s; --x: 85%; --size: 2.5rem;">⏳</span>
+        <span class="float-item" style="--delay: 4s; --x: 70%; --size: 1.8rem;">✨</span>
+        <span class="float-item" style="--delay: 1s; --x: 20%; --size: 1.5rem;">⚡</span>
+        <span class="float-item" style="--delay: 3s; --x: 90%; --size: 2.2rem;">🎈</span>
+    </div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- LEFT PANEL: Settings -->
+        <aside class="left-panel">
+            <header class="app-header">
+                <a href="../index.html" class="back-home-btn" title="Kembali ke Beranda">🏠</a>
+                <h1 id="main-title">⏱️ Stopwatch Multi-Komponen</h1>
+                <p class="subtitle">Atur komponen dan mulai hitung waktunya! 🚀</p>
+            </header>
+
+            <section class="settings-card">
+                <div class="setting-group">
+                    <label for="comp-count" class="setting-label">Jumlah Komponen (1 - 9):</label>
+                    <div class="count-input-wrapper">
+                        <input type="number" id="comp-count" min="1" max="9" value="3">
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label">Nama Komponen & Tombol Pintas:</label>
+                    <div id="components-inputs-container" class="inputs-container">
+                        <!-- Dynamic inputs will be generated here -->
+                    </div>
+                </div>
+
+                <div class="setting-group checkbox-group">
+                    <label class="checkbox-label" for="precision-ms">
+                        <input type="checkbox" id="precision-ms" checked>
+                        <span class="checkbox-custom"></span>
+                        <span class="checkbox-text">Presisi Milisecond</span>
+                    </label>
+                </div>
+
+                <button id="apply-settings-btn" class="primary-btn">
+                    <span class="btn-icon">⚙️</span>
+                    <span class="btn-text">Terapkan Pengaturan</span>
+                </button>
+            </section>
+
+            <!-- Shortcuts Info -->
+            <section class="info-card">
+                <h3>💡 Tombol Pintas Keyboard:</h3>
+                <ul class="shortcuts-list">
+                    <li><kbd>1</kbd> s/d <kbd>9</kbd> : Aktifkan / Pindah ke Komponen</li>
+                    <li><kbd>Spasi</kbd> : Berhentikan (Pause) Sementara</li>
+                </ul>
+            </section>
+        </aside>
+
+        <!-- RIGHT PANEL: Timer & Stats -->
+        <main class="right-panel">
+            <!-- Clock Screen -->
+            <section class="clock-display-card">
+                <div class="active-badge" id="active-component-badge">
+                    Menunggu Dimulai...
+                </div>
+                <div class="main-timer" id="total-time-display">00:00:00.000</div>
+                <div class="timer-label">Total Waktu Berjalan</div>
+
+                <!-- Clock controls -->
+                <div class="control-actions">
+                    <button id="stop-timer-btn" class="control-btn stop-btn" disabled>
+                        <span class="btn-icon">⏹️</span> Hentikan (Spasi)
+                    </button>
+                    <button id="reset-timer-btn" class="control-btn reset-btn">
+                        <span class="btn-icon">🔄</span> Reset Ulang
+                    </button>
+                </div>
+            </section>
+
+            <!-- Statistics Card -->
+            <section class="stats-card">
+                <h2 class="section-title">📊 Statistik Pembagian Waktu</h2>
+                
+                <div class="stacked-bar-wrapper" id="stacked-bar-wrapper">
+                    <!-- Labels above the bar -->
+                    <div class="stacked-labels-row" id="stacked-labels-row"></div>
+                    
+                    <!-- The single horizontal bar -->
+                    <div class="stacked-progress-track" id="stacked-progress-track">
+                        <!-- Segments will be rendered here -->
+                        <div class="stacked-bar-placeholder" id="stacked-bar-placeholder">
+                            Tekan tombol angka (1-9) untuk mulai merekam waktu
+                        </div>
+                    </div>
+                    
+                    <!-- Times below the bar -->
+                    <div class="stacked-times-row" id="stacked-times-row"></div>
+                </div>
+
+                <!-- Detailed list grid -->
+                <div class="legend-grid" id="legend-grid"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Component Details Modal -->
+    <div class="modal-overlay" id="details-modal">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="close-modal-btn">&times;</button>
+            <div class="modal-header">
+                <h2 id="modal-title">📊 Detail Komponen</h2>
+                <div class="modal-badge" id="modal-key-badge">1</div>
+            </div>
+            <div class="modal-body">
+                <!-- Stats Summary -->
+                <div class="stats-summary-grid">
+                    <div class="stat-box">
+                        <span class="stat-val" id="stat-min">-</span>
+                        <span class="stat-label">Min</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-val" id="stat-max">-</span>
+                        <span class="stat-label">Max</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-val" id="stat-avg">-</span>
+                        <span class="stat-label">Rata-rata</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-val" id="stat-stdev">-</span>
+                        <span class="stat-label">Stdev</span>
+                    </div>
+                </div>
+
+                <!-- Run Chart -->
+                <div class="chart-section">
+                    <h3>📈 Tren Waktu per Percobaan (Detik)</h3>
+                    <div class="chart-wrapper">
+                        <!-- Y-axis labels -->
+                        <div class="chart-y-axis" id="chart-y-axis"></div>
+                        <!-- Bar chart container -->
+                        <div class="custom-bar-chart" id="custom-bar-chart">
+                            <!-- Bars will be dynamically inserted here -->
+                        </div>
+                    </div>
+                    <div class="chart-x-label">Urutan Percobaan</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>
