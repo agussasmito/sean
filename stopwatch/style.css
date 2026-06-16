@@ -1001,6 +1001,34 @@ kbd {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
+.chart-detail-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    margin-left: 12px;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+.chart-detail-btn:hover:not(:disabled) {
+    background: var(--active-color, #6c5ce7);
+    color: white;
+    transform: scale(1.1);
+}
+
+.chart-detail-btn:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
 @media (max-width: 600px) {
     .stats-summary-grid {
         grid-template-columns: repeat(2, 1fr);

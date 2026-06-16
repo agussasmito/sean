@@ -191,7 +191,7 @@ function renderStatsList() {
 
         // 4. Legend Detail Card
         const card = document.createElement('div');
-        card.className = 'legend-card';
+        card.className = 'legend-card clickable';
         card.id = `legend-card-${comp.id}`;
         card.style.setProperty('--active-color', comp.color);
         card.style.setProperty('--active-bg', comp.bg);
@@ -200,16 +200,27 @@ function renderStatsList() {
                 <span class="key-badge" style="background-color: ${comp.keyBg}">${comp.id}</span>
                 <span class="legend-name">${comp.name}</span>
             </div>
-            <div class="legend-right">
-                <span class="legend-time" id="legend-time-${comp.id}">00:00:00${precisionMs ? '.000' : ''}</span>
-                <span class="legend-percent" id="legend-percent-${comp.id}">0%</span>
+            <div class="legend-right-wrapper" style="display: flex; align-items: center;">
+                <div class="legend-right" style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <span class="legend-time" id="legend-time-${comp.id}">00:00:00${precisionMs ? '.000' : ''}</span>
+                    <span class="legend-percent" id="legend-percent-${comp.id}">0%</span>
+                </div>
+                <button class="chart-detail-btn" id="chart-detail-btn-${comp.id}" title="Analisis Statistik">📊</button>
             </div>
         `;
+        
+        // Card click triggers activation/switching (works for mobile/desktop)
         card.onclick = () => {
-            if (!isRunning) {
-                showComponentDetails(comp.id);
-            }
+            activateComponent(comp.id);
         };
+
+        // Detail button triggers modal popup
+        const detailBtn = card.querySelector('.chart-detail-btn');
+        detailBtn.onclick = (e) => {
+            e.stopPropagation(); // Prevent triggering card activation click
+            showComponentDetails(comp.id);
+        };
+
         legendGrid.appendChild(card);
     });
 }
@@ -505,15 +516,20 @@ function finalizeActiveRun() {
     activeRunDuration = 0; // reset
 }
 
-// Manage clickable states of legend cards
+// Manage clickable states of legend cards and detail buttons
 function updateLegendClickability() {
     components.forEach((comp) => {
         const card = document.getElementById(`legend-card-${comp.id}`);
+        const btn = document.getElementById(`chart-detail-btn-${comp.id}`);
         if (card) {
+            // Cards are always clickable to switch/start now!
+            card.classList.add('clickable');
+        }
+        if (btn) {
             if (isRunning) {
-                card.classList.remove('clickable');
+                btn.disabled = true;
             } else {
-                card.classList.add('clickable');
+                btn.disabled = false;
             }
         }
     });
